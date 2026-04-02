@@ -61,6 +61,28 @@ body {
   color: var(--text-muted);
 }
 
+.inspired-by {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.inspired-by a, .inspired-by-header {
+  color: var(--duck-yellow);
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.inspired-by a:hover, .inspired-by-header:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.inspired-by-header {
+  margin-left: auto;
+}
+
 /* === Header (session page) === */
 .header {
   display: flex;
