@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Give A Duck? 🦆</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="header-logo">🦆</span>
+      <span class="header-title">Do You Give A Duck?</span>
+    </div>
+
+    <!-- Join screen (for non-creators) -->
+    <div id="join-screen" class="card" style="display: none;">
+      <h2 id="join-topic" class="topic"></h2>
+      <div class="form-group">
+        <label for="join-name">What's your name, duck?</label>
+        <input
+          type="text"
+          id="join-name"
+          placeholder="e.g., Bob"
+          required
+          maxlength="30"
+          autofocus
+        >
+      </div>
+      <button id="join-btn" class="btn btn-primary">🦆 Join the Pond</button>
+    </div>
+
+    <!-- Lobby screen -->
+    <div id="lobby-screen" style="display: none;">
+      <div class="card">
+        <h2 id="lobby-topic" class="topic"></h2>
+        <div class="pond-status">
+          <span class="duck-icon-large">🦆</span>
+          <p id="pond-count" class="pond-count"></p>
+        </div>
+        <div id="participant-list" class="participant-list"></div>
+
+        <div id="share-section" class="share-section">
+          <p class="share-label">Share this link to gather your flock:</p>
+          <div class="share-url-row">
+            <input type="text" id="share-url" class="share-url" readonly>
+            <button id="copy-btn" class="btn btn-small" type="button">Copy</button>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary" style="display: none;">
+          🦆 Quack, Go!
+        </button>
+        <p id="waiting-msg" class="waiting-msg" style="display: none;">
+          Waiting for the head duck to quack go...
+        </p>
+      </div>
+    </div>
+
+    <!-- Voting screen -->
+    <div id="voting-screen" style="display: none;">
+      <div class="card">
+        <h2 id="voting-topic" class="topic"></h2>
+        <div id="timer-display" class="timer-display">
+          <div class="timer-number" id="timer-number">30</div>
+          <div class="timer-label">seconds to give your ducks</div>
+        </div>
+        <p class="vote-prompt">How many ducks do you give?</p>
+        <div id="duck-display" class="duck-display">
+          <span id="duck-icons" class="duck-icons"></span>
+        </div>
+        <div class="slider-wrap">
+          <input type="range" id="duck-slider" class="duck-slider" min="0" max="10" value="5">
+          <div class="slider-labels">
+            <span>0</span><span>5</span><span>10</span>
+          </div>
+        </div>
+        <p id="vote-status" class="vote-status"></p>
+      </div>
+    </div>
+
+    <!-- Results screen -->
+    <div id="results-screen" style="display: none;">
+      <div class="card">
+        <h2 id="results-topic" class="topic"></h2>
+        <div class="results-header">
+          <span class="duck-icon-large">🦆</span>
+          <h3>The Ducks Have Spoken</h3>
+        </div>
+        <div id="results-list" class="results-list"></div>
+      </div>
+    </div>
+
+    <!-- Error screen -->
+    <div id="error-screen" class="card" style="display: none;">
+      <div class="error-content">
+        <span class="duck-icon-large">🦆❌</span>
+        <h2>Quack! Something went wrong</h2>
+        <p id="error-message"></p>
+        <a href="/" class="btn btn-primary">Back to the Pond</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>

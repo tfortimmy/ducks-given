@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Give A Duck? 🦆</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="logo">🦆</div>
+      <h1>Do You Give A Duck?</h1>
+      <p class="tagline">Duck in or duck out.</p>
+    </div>
+
+    <form id="create-form" class="card">
+      <div class="form-group">
+        <label for="topic">What's the debate?</label>
+        <input
+          type="text"
+          id="topic"
+          placeholder="e.g., Should we rewrite the auth service?"
+          required
+          maxlength="200"
+          autofocus
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="name">Your name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="e.g., Alice"
+          required
+          maxlength="30"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="timer">Timer (seconds)</label>
+        <input
+          type="number"
+          id="timer"
+          value="30"
+          min="5"
+          max="300"
+          required
+        >
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        🦆 Start a Duck Check
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('create-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const topic = document.getElementById('topic').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const timer = document.getElementById('timer').value;
+
+      if (!topic || !name) return;
+
+      // Pass creation params via URL — session is created from the session page
+      const params = new URLSearchParams({
+        create: '1',
+        topic,
+        name,
+        timer,
+      });
+
+      window.location.href = `/session.html?${params.toString()}`;
+    });
+  </script>
+</body>
+</html>
